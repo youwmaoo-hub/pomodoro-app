@@ -40,6 +40,15 @@ npx expo install <package>
 - 组件放 `src/components/`，自定义 Hooks 放 `src/hooks/`，纯函数放 `src/utils/`
 - 颜色、间距、圆角、字体一律引用 `src/constants/index.ts` 中的设计系统，不要硬编码
 
+## 技术决策与注意事项
+
+改动前请先了解这几个刻意的选择，避免「顺手修好」反而弄坏功能：
+
+- **不用 Reanimated**：SDK 57 与 Reanimated 3/4 存在版本冲突，动画统一使用 React Native 内置的 `Animated` API，可省掉额外的 Babel 插件与版本约束。
+- **`--legacy-peer-deps` 是必需的**：部分依赖的 peer dependencies 不匹配，直接 `npm install` 会失败；CI 与本文档都带该标志。
+- **后台计时靠时间戳差值**：`src/hooks/useTimer.ts` 用 `AppState` 监听前后台切换，进入后台记录时间戳、回到前台用 `Date.now()` 差值补算剩余秒数，因此不依赖会被系统暂停的 `setInterval`。
+- **tsconfig 放宽了两项**：`skipLibCheck: true` 规避 `expo-router/entry` 缺类型声明，`strict: false` 沿用初始模板设定；收紧它们需先修完所有类型报错，请放在独立 PR 中。
+
 ## 提交前自查
 
 ```bash
