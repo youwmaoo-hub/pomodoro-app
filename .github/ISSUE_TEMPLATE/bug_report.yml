@@ -1,0 +1,62 @@
+name: 🐛 Bug 反馈
+description: 报告一个可以复现的问题
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！请尽量填写完整，便于快速定位问题。
+        如果是安全问题，请不要在此公开，参见仓库的 Security 说明。
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 发生了什么？你期望发生什么？
+      placeholder: 例如：番茄钟计时到 0 后没有自动停止，而是继续计时。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. 打开「番茄钟」页
+        2. 点击「开始」
+        3. 等待计时结束
+        4. 看到……
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 应用版本
+      description: 见「Releases」中下载的 APK 文件名，或 `app.json` 中的 `version`
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 设备与系统
+      placeholder: 例如：Redmi K40 / Android 13；或 Android Studio 模拟器 Pixel 6 / API 34
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: 运行方式
+      options:
+        - 安装 Releases 中的 APK
+        - 本地 `npx expo start` + Expo Go
+        - 本地 `npx expo run:android`
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息
+      description: 截图、录屏、报错日志等（可留空）
+    validations:
+      required: false

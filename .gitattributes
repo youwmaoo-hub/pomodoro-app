@@ -1,0 +1,14 @@
+# 统一换行符，避免不同平台贡献者产生无意义的整文件 diff
+* text=auto eol=lf
+
+# 二进制资源不要做换行符转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.apk binary
+*.aab binary
+
+# 锁文件在 diff 与合并中按生成文件处理
+package-lock.json -diff merge=ours linguist-generated=true

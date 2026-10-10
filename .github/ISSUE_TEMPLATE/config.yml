@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 阅读文档
+    url: https://github.com/youwmaoo-hub/pomodoro-app#readme
+    about: 安装、构建与常见问题请先看 README 和 BUILD_GUIDE。
